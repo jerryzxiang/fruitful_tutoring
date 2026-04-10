@@ -1,2 +1,1 @@
-# fruitful_tutoring
-Fruitful Tutoring Website
+# Fruitful Tutoring Website
