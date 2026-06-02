@@ -227,7 +227,6 @@ main {
 .hero-card,
 .mini-card,
 .subject-card,
-.testimonial-card,
 .contact-form,
 .contact-card,
 .approach-points article {
@@ -293,11 +292,11 @@ h1 {
 .subject-card p,
 .approach-copy p,
 .approach-points p,
-.testimonial-card p,
 .contact-copy p,
 .contact-card p,
 .mini-card p,
-.site-footer p {
+.site-footer p,
+.credential-list {
   color: var(--muted);
   line-height: 1.75;
 }
@@ -523,7 +522,6 @@ h1 {
 
 .subjects,
 .approach,
-.testimonials,
 .contact {
   padding: 3.25rem 0;
 }
@@ -577,6 +575,25 @@ h1 {
   margin: 0 0 1rem;
 }
 
+.credential-panel {
+  margin-top: 1.5rem;
+  padding: 1.4rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 251, 244, 0.58);
+}
+
+.credential-panel h3 {
+  font-size: 1.45rem;
+}
+
+.credential-list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0.9rem 0 0;
+  padding-left: 1.15rem;
+}
+
 .approach-points {
   display: grid;
   gap: 1rem;
@@ -593,54 +610,6 @@ h1 {
 
 .approach-points p {
   margin: 0.65rem 0 0;
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.testimonial-card {
-  position: relative;
-  padding: 1.8rem;
-  border-radius: var(--radius-lg);
-}
-
-.testimonial-card-featured {
-  background:
-    linear-gradient(180deg, rgba(97, 60, 85, 0.97), rgba(67, 35, 55, 0.96)),
-    var(--grape);
-  color: #fff8f0;
-}
-
-.testimonial-card-featured p,
-.testimonial-card-featured footer span {
-  color: rgba(255, 244, 234, 0.78);
-}
-
-.quote-mark {
-  margin: 0;
-  color: var(--gold);
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 3.8rem;
-  line-height: 0.8;
-}
-
-.testimonial-card p:not(.quote-mark) {
-  margin: 1rem 0 0;
-}
-
-.testimonial-card footer {
-  display: grid;
-  gap: 0.2rem;
-  margin-top: 1.35rem;
-}
-
-.testimonial-card footer span {
-  color: var(--muted);
-  font-size: 0.95rem;
 }
 
 .contact {
@@ -670,14 +639,18 @@ h1 {
   display: inline-block;
   margin-top: 0.35rem;
   font-family: "Fraunces", Georgia, serif;
-  font-size: 1.7rem;
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+  overflow-wrap: anywhere;
 }
 
 .contact-phone {
   margin: 0.35rem 0 0;
   font-family: "Fraunces", Georgia, serif;
-  font-size: 1.7rem;
   color: var(--text);
+}
+
+.contact-phone a {
+  margin-top: 0;
 }
 
 .contact-card p {
@@ -796,8 +769,7 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .subject-grid,
-  .testimonial-grid {
+  .subject-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -844,7 +816,6 @@ h1 {
 
   .trust-strip,
   .subject-grid,
-  .testimonial-grid,
   .form-grid {
     grid-template-columns: 1fr;
   }

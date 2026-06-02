@@ -7,8 +7,9 @@ const sections = navLinks
   .filter(Boolean);
 
 const revealElements = document.querySelectorAll(".reveal");
-const form = document.querySelector("[data-demo-form]");
+const form = document.querySelector("[data-contact-form]");
 const status = document.querySelector("[data-form-status]");
+const inquiryEmail = "fruitfultutoring@gmail.com";
 
 if ("IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver(
@@ -77,7 +78,7 @@ if (form && status) {
     });
 
     if (invalidFields.length > 0) {
-      status.textContent = "Please complete the required fields before sending the demo inquiry.";
+      status.textContent = "Please complete the required fields before sending your inquiry.";
       status.classList.add("is-error");
       invalidFields[0].focus();
       return;
@@ -85,10 +86,33 @@ if (form && status) {
 
     const formData = new FormData(form);
     const name = formData.get("parentName");
+    const email = formData.get("email");
+    const phone = formData.get("phone") || "Not provided";
+    const studentNeeds = formData.get("studentNeeds");
+    const nextStep = formData.get("nextStep");
+    const schedule = formData.get("schedule");
+    const message = formData.get("message");
+    const subject = `Tutoring inquiry from ${name || "a family"}`;
+    const body = [
+      "Hello Fruitful Tutoring,",
+      "",
+      "I would like to ask about tutoring.",
+      "",
+      `Parent name: ${name}`,
+      `Email: ${email}`,
+      `Phone: ${phone}`,
+      `Student grade / subject: ${studentNeeds}`,
+      `Best next step: ${nextStep}`,
+      `Preferred schedule: ${schedule}`,
+      "",
+      "Message:",
+      message,
+    ].join("\n");
+    const mailtoUrl = `mailto:${inquiryEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    status.textContent = `Thanks${name ? `, ${name}` : ""}. This demo inquiry is ready for a future email connection.`;
+    status.textContent = `Thanks${name ? `, ${name}` : ""}. Your email app should open with a prefilled message.`;
     status.classList.add("is-success");
 
-    form.reset();
+    window.location.href = mailtoUrl;
   });
 }
