@@ -110,7 +110,7 @@ if (form && status) {
     ].join("\n");
     const mailtoUrl = `mailto:${inquiryEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    status.textContent = `Thanks${name ? `, ${name}` : ""}. Your email app should open with a prefilled message.`;
+    status.textContent = `Thanks${name ? `, ${name}` : ""}. Your email app should open with a prefilled message. If nothing opens, email fruitfultutoring@gmail.com directly.`;
     status.classList.add("is-success");
 
     window.location.href = mailtoUrl;
