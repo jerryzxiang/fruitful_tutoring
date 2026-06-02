@@ -89,8 +89,6 @@ if (form && status) {
     const email = formData.get("email");
     const phone = formData.get("phone") || "Not provided";
     const studentNeeds = formData.get("studentNeeds");
-    const nextStep = formData.get("nextStep");
-    const schedule = formData.get("schedule");
     const message = formData.get("message");
     const subject = `Tutoring inquiry from ${name || "a family"}`;
     const body = [
@@ -102,8 +100,6 @@ if (form && status) {
       `Email: ${email}`,
       `Phone: ${phone}`,
       `Student grade / subject: ${studentNeeds}`,
-      `Best next step: ${nextStep}`,
-      `Preferred schedule: ${schedule}`,
       "",
       "Message:",
       message,
